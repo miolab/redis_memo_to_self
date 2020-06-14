@@ -13,16 +13,14 @@
   * [The Little Redis Book](https://www.openmymind.net/2012/1/23/The-Little-Redis-Book/)
     * [和訳](https://github.com/craftgear/the-little-redis-book)
 
-### 実行環境
+#### 実行環境
 
-| | バージョン | |
-| :-- | :-- | :-- |
+| | バージョン |
+| :-- | :-- |
 | macOS | 10.14.6 |
 | Redis | 6.0.5 |
 
----
-
-## セットアップ
+#### セットアップ
 
 - インストール
 
@@ -34,7 +32,7 @@
 
 ## サーバー/クライアントの起動/終了
 
-- サーバー起動 `redis-server`
+- サーバー起動 __（`redis-server`）__
 
   ```redis
   $ redis-server
@@ -64,19 +62,15 @@
   12349:M 14 Jun 2020 08:13:01.692 * Ready to accept connections
   ```
 
-- サーバー終了
-
-  後述
-
 - クライアント
 
-  （別ターミナルで）
+  （サーバーと別ターミナルを起動）
 
   | | コマンド |
   | :-- | :-- |
   | クライアント起動 | `$ redis-cli` |
   | クライアント終了 | `> exit` |
-  | サーバー終了 | `> shutdown` |
+  | __サーバー終了__ | `> shutdown` |
 
   ```terminal
   $ redis-cli
@@ -103,20 +97,24 @@
 
 ## データベース接続 / データ永続化（save）
 
-```redis
-$ redis-cli
+- データベース選択 __（`select NUM`）__
 
-// データベース選択（select NUM）
-127.0.0.1:6379> select 1
-OK
+  ```redis
+  $ redis-cli
 
-127.0.0.1:6379[1]> select 0
-OK
+  127.0.0.1:6379> select 1
+  OK
 
-// データ保存（bgsave）
-127.0.0.1:6379> bgsave
-Background saving started
-```
+  127.0.0.1:6379[1]> select 0
+  OK
+  ```
+
+- データ保存 __（`bgsave`）__
+
+  ```redis
+  127.0.0.1:6379> bgsave
+  Background saving started
+  ```
 
 ---
 
